@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main  # or your default branch
 
 permissions:
   contents: write
@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # or the version you use
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
@@ -31,5 +31,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # or ./build for Create React App
-
+          publish_dir: ./dist
