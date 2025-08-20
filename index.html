@@ -1,13 +1,256 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AKULAB Battery Company Website</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AKULAB Charging Solutions</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #010810;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    header, footer {
+      background-color: #020e1a;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    nav a {
+      color: #8fff54;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hero-text {
+      max-width: 500px;
+    }
+    .hero-text h1 {
+      color: #8fff54;
+      font-size: 2rem;
+    }
+    .btn-primary, .btn-secondary {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background-color: #8fff54;
+      color: #000;
+    }
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid #8fff54;
+      color: #8fff54;
+    }
+    .search-section, .products, .about {
+      padding: 2rem;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .product-item {
+      background-color: #020e1a;
+      padding: 1rem;
+      border: 1px solid #8fff54;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .about ul {
+      list-style: none;
+      padding: 0;
+    }
+    .about li::before {
+      content: "\2714 ";
+      color: #8fff54;
+      margin-right: 0.5rem;
+    }
+    footer div {
+      flex: 1 1 200px;
+      margin: 1rem 0;
+    }
+    .lang-switcher {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+    }
+    .lang-switcher button {
+      margin-left: 0.5rem;
+      padding: 0.3rem 0.6rem;
+      background: transparent;
+      border: 1px solid #8fff54;
+      color: #8fff54;
+      cursor: pointer;
+    }
+    .map {
+      padding: 2rem;
+    }
+    .contact-form {
+      padding: 2rem;
+      background-color: #020e1a;
+    }
+    .contact-form form {
+      display: grid;
+      grid-gap: 1rem;
+      max-width: 500px;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .contact-form button {
+      background-color: #8fff54;
+      border: none;
+      padding: 0.7rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-switcher">
+    <button onclick="setLang('sv')">🇸🇪 Svenska</button>
+    <button onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="AKULAB logo">
+      <strong>AKULAB</strong>
+    </div>
+    <nav>
+      <a href="#products">Produkter</a>
+      <a href="#about">Om oss</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="images/logo.png" alt="Batterier" style="max-width: 300px; width: 100%; margin-right: 2rem">
+    <div class="hero-text">
+      <h1 data-sv="Batterier från ledande varumärken – direkt till din dörr" data-en="Batteries from leading brands – delivered to your door"></h1>
+      <p data-sv="Bilbatterier, MC-batterier, stationära & solcellsbatterier från ..." data-en="Car batteries, motorcycle batteries, stationary & solar batteries from ..."></p>
+      <button class="btn-secondary" data-sv="Se våra produkter" data-en="See our products"></button>
+      <button class="btn-primary" data-sv="Sök" data-en="Search"></button>
+    </div>
+  </section>
+
+  <section class="search-section">
+    <h2 data-sv="Besök vår butik" data-en="Visit our store"></h2>
+    <p data-sv="Upptäck hela vårt sortiment i vår webbutik." data-en="Discover our full selection in our online store."></p>
+    <a href="https://example.com" class="btn-primary" target="_blank" data-sv="Gå till butiken" data-en="Go to Store"></a>
+  </section>
+
+
+  <section class="products" id="products">
+    <h2 data-sv="Produkter" data-en="Products"></h2>
+    <div class="product-list">
+      <div class="product-item">
+        <h3 data-sv="Bilbatterier" data-en="Car Batteries"></h3>
+        <p>Från 387 kr</p>
+      </div>
+      <div class="product-item">
+        <h3 data-sv="MC-batterier" data-en="MC Batteries"></h3>
+        <p>Från 387 kr</p>
+      </div>
+      <div class="product-item">
+        <h3 data-sv="Stationära batterier" data-en="Stationary Batteries"></h3>
+        <p>Från 387 kr</p>
+      </div>
+      <div class="product-item">
+        <h3 data-sv="Solcellsbatterier" data-en="Solar Batteries"></h3>
+        <p>Från 387 kr</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2 data-sv="Om oss" data-en="About us"></h2>
+    <ul>
+      <li data-sv="Snabb leverans i hela Sverige" data-en="Fast delivery across Sweden"></li>
+      <li data-sv="Kända märken & garantier" data-en="Known brands & warranties"></li>
+      <li data-sv="Klarna, swish & kortbetalning" data-en="Klarna, swish & card payments"></li>
+    </ul>
+    <p data-sv="AKULAB är en ny återförsäljare i Sverige som erbjuder högkvalitiva batterier från välkända märken ..." data-en="AKULAB is a new distributor in Sweden offering high-quality batteries from well-known brands ..."></p>
+  </section>
+
+  <section class="map">
+    <iframe src="https://maps.google.com/maps?q=stockholm&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <section class="contact-form" id="contact">
+    <h2 data-sv="Kontakta oss" data-en="Contact us"></h2>
+    <form>
+      <input type="text" placeholder="Namn / Name" required>
+      <input type="email" placeholder="E-post / Email" required>
+      <textarea placeholder="Meddelande / Message" rows="4" required></textarea>
+      <button type="submit" data-sv="Skicka" data-en="Send"></button>
+    </form>
+  </section>
+
+  <footer>
+    <div>
+      <strong data-sv="Mitt konto" data-en="My account"></strong><br>
+      <small>Personlig information<br>Orderhistorik<br>Leveransadresser</small>
+    </div>
+    <div>
+      <strong data-sv="Information" data-en="Information"></strong><br>
+      <small>Om oss<br>Defekt vara</small>
+    </div>
+    <div>
+      <strong data-sv="Hjälp" data-en="Help"></strong><br>
+      <small>Vanliga frågor<br>Kundtjänst<br>Kontakt</small>
+    </div>
+    <div>
+      <small>&copy; 2025 Akulab AB</small>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-sv]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+    }
+    setLang('sv');
+  </script>
+</body>
 </html>
