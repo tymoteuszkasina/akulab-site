@@ -1,1048 +1,541 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKULAB - Charging Solutions</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #ffffff;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            padding: 1rem 0;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 40px;
-            background: linear-gradient(45deg, #00d4ff, #ff6b00);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, #00d4ff 0%, #1e90ff 50%, #ff6b00 100%);
-            opacity: 0.8;
-            border-radius: 8px;
-        }
-
-        .logo-icon i {
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px; /* spacing between columns */
-            padding: 50px 20px;
-        }
-        
-        .about-content > div {
-            flex: 1 1 300px; /* flexible columns */
-        }
-        
-        .about h2 {
-            margin-bottom: 20px; /* spacing after header */
-        }
-        
-        .about p {
-            margin-bottom: 20px; /* spacing between paragraphs */
-            line-height: 1.6;    /* readability */
-        }
-        
-        .about h3 {
-            margin-top: 30px;   /* spacing before section header */
-            margin-bottom: 15px;
-        }
-        
-        .about-features li {
-            margin-bottom: 10px; /* spacing between list points */
-        }
-        
-        .vision-section p {
-            margin-bottom: 20px; /* spacing between vision paragraphs */
-        }
-
-        .logo-subtext {
-            font-size: 0.8rem;
-            color: #b0b0b0;
-            margin-left: 5px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #7fff00;
-        }
-
-        .language-switcher {
-            display: flex;
-            gap: 10px;
-            margin-left: 20px;
-        }
-
-        .lang-btn {
-            background: rgba(127, 255, 0, 0.1);
-            border: 1px solid #7fff00;
-            color: #7fff00;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn.active,
-        .lang-btn:hover {
-            background: #7fff00;
-            color: #1a1a2e;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 0;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #7fff00;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #b0b0b0;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: transparent;
-            color: #00d4ff;
-            border: 2px solid #00d4ff;
-        }
-
-        .btn-primary:hover {
-            background: #00d4ff;
-            color: #1a1a2e;
-        }
-
-        .btn-success {
-            background: #7fff00;
-            color: #1a1a2e;
-        }
-
-        .btn-success:hover {
-            background: #6bdd00;
-            transform: translateY(-2px);
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .battery-image {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 10px 30px rgba(127, 255, 0, 0.3));
-        }
-
-        .battery-search {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .battery-search h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .search-form {
-            display: flex;
-            gap: 1rem;
-            align-items: end;
-        }
-
-        .search-form input {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #333;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .search-form input::placeholder {
-            color: #b0b0b0;
-        }
-
-        .search-help {
-            font-size: 0.9rem;
-            color: #b0b0b0;
-            margin-top: 0.5rem;
-        }
-
-        /* Products Section */
-        .products {
-            padding: 4rem 0;
-        }
-
-        .products h2 {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: #ffffff;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .product-card {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(127, 255, 0, 0.2);
-        }
-
-        .product-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            background: linear-gradient(45deg, #00d4ff, #7fff00);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .product-card h3 {
-            color: #7fff00;
-            margin-bottom: 1rem;
-        }
-
-        .product-price {
-            color: #b0b0b0;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-stock {
-            color: #7fff00;
-            font-size: 0.9rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 4rem 0;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about h2 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .about-features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .about-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: #b0b0b0;
-        }
-
-        .about-features li::before {
-            content: '✓';
-            color: #7fff00;
-            font-weight: bold;
-        }
-
-        .vision-section {
-            margin-top: 2rem;
-        }
-
-        .vision-section h3 {
-            color: #7fff00;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 4rem 0;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-info h3 {
-            color: #7fff00;
-            margin-bottom: 1rem;
-        }
-
-        .contact-details {
-            margin-bottom: 2rem;
-        }
-
-        .contact-details p {
-            margin-bottom: 0.5rem;
-            color: #b0b0b0;
-        }
-
-        .contact-details strong {
-            color: #ffffff;
-        }
-
-        .contact-form {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 2rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-form h3 {
-            color: #7fff00;
-            margin-bottom: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #333;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #b0b0b0;
-        }
-
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        /* FAQ Section */
-        .faq {
-            padding: 4rem 0;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .faq h2 {
-            color: #ffffff;
-            margin-bottom: 2rem;
-        }
-
-        .faq-item {
-            background: rgba(0, 0, 0, 0.3);
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .faq-question {
-            padding: 1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #7fff00;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            font-size: 1rem;
-        }
-
-        .faq-answer {
-            padding: 0 1rem 1rem;
-            color: #b0b0b0;
-            display: none;
-        }
-
-        .faq-answer.active {
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            color: #7fff00;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: #b0b0b0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #7fff00;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #666;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .search-form {
-                flex-direction: column;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero,
-        .product-card,
-        .about-content {
-            animation: fadeInUp 0.6s ease;
-        }
-
-        /* Language content visibility */
-        .lang-content {
-            display: none;
-        }
-
-        .lang-content.active {
-            display: block;
-        }
-
-        /* Mobile menu */
-        .mobile-menu {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu {
-                display: block;
-                color: #ffffff;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKULAB - Charging Solutions</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c121a;
+      --bg-2: #0f1823;
+      --card: #0f1d2a;
+      --muted: #a9b3bf;
+      --text: #e6edf3;
+      --green: #7fff00;
+      --blue: #00d4ff;
+      --border: #233244;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 14px;
+      --container: 1200px;
+      --header-h: 76px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container { max-width: var(--container); padding: 0 24px; margin: 0 auto; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(6,12,18,.85); backdrop-filter: saturate(140%) blur(8px); border-bottom: 1px solid #0f1a26; height: var(--header-h); }
+    nav { height: 100%; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; }
+
+    .brand { display:flex; align-items:center; gap:14px; }
+    .brand img { height: 46px; display:block; }
+
+    .nav-links { display:flex; align-items:center; gap:26px; list-style:none; padding:0; margin:0; }
+    .nav-links a { color: var(--text); text-decoration:none; font-weight: 600; opacity:.85; transition: .2s; }
+    .nav-links a:hover { color: var(--green); opacity: 1; }
+
+    .nav-right { display:flex; align-items:center; gap:16px; }
+    .language-switcher { display:flex; gap:10px; }
+    .lang-btn { background: transparent; border:1px solid var(--green); color: var(--green); padding:6px 10px; border-radius:8px; cursor:pointer; font-weight:600; }
+    .lang-btn.active, .lang-btn:hover{ background: var(--green); color:#0a1218; }
+
+    .icon-btn { width: 38px; height: 38px; display:grid; place-items:center; border-radius: 10px; border:1px solid #182433; color: #cdd7e1; background: #0c1622; cursor:pointer; }
+    .icon-btn:hover { border-color: var(--green); color: var(--green); }
+
+    /* Sections */
+    section { scroll-margin-top: calc(var(--header-h) + 16px); }
+    .section { padding: 72px 0; }
+    .section.alt { background: var(--bg-2); border-top: 1px solid #101d2a; border-bottom: 1px solid #101d2a; }
+
+    .title { font-size: 36px; margin: 0 0 28px; text-align: left; }
+    .title.center { text-align:center; }
+
+    /* Hero */
+    .hero { padding: 48px 0 32px; }
+    .hero-grid { display:grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+    .eyebrow { color: var(--green); letter-spacing:.02em; font-weight:700; text-transform:none; margin-bottom: 8px; }
+    .hero h1 { font-size: 44px; line-height: 1.15; margin: 0 0 14px; color: var(--text); }
+    .hero p { color: var(--muted); font-size: 18px; margin: 0 0 24px; }
+    .hero-actions { display:flex; gap: 14px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding: 12px 20px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer; text-decoration: none; font-weight: 700; }
+    .btn.primary { background: transparent; color: var(--blue); border-color: var(--blue); }
+    .btn.primary:hover { background: var(--blue); color: #04121f; }
+    .btn.success { background: var(--green); color: #071219; border-color: var(--green); }
+    .btn.success:hover { filter: brightness(.95); }
+
+    .hero-media { position: relative; }
+    .hero-card { background: linear-gradient(180deg, rgba(8,18,28,.6), rgba(8,18,28,.9)); border:1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+    .hero-img { width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,.45); }
+
+    /* Finder */
+    .finder { margin-top: 28px; }
+    .finder-card { background: #0b1723; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+    .finder-title { font-weight: 800; margin: 0 0 12px; }
+    .finder-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+    .input { height: 44px; background: #0a1621; border:1px solid #1a2a3a; border-radius: 10px; color: var(--text); padding: 0 14px; font-size: 16px; }
+    .input::placeholder{ color:#8390a0; }
+    .finder-hint { color: var(--muted); margin-top: 8px; font-size: 14px; }
+
+    /* Products */
+    .grid-4 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    @media (max-width: 1100px){ .grid-4 { grid-template-columns: repeat(3,1fr);} }
+    @media (max-width: 860px){ .grid-4 { grid-template-columns: repeat(2,1fr);} }
+    @media (max-width: 540px){ .grid-4 { grid-template-columns: 1fr;} }
+
+    .product-card { background: var(--card); border:1px solid #274027; border-radius: var(--radius); padding: 18px; display:flex; flex-direction:column; min-height: 320px; box-shadow: var(--shadow); }
+    .product-thumb { width:100%; aspect-ratio: 4/3; object-fit: cover; background: #0a141e; border-radius: 12px; border:1px solid var(--border); }
+    .product-name { font-size: 20px; font-weight: 800; margin: 14px 0 6px; color: var(--green); }
+    .product-price { color: var(--muted); margin-bottom: 12px; }
+    .product-spacer { flex:1; }
+    .product-card .btn { width: 100%; }
+
+    /* About */
+    .about-grid { display:grid; grid-template-columns: .8fr 1.2fr; gap: 40px; align-items: start; }
+    @media (max-width: 860px){ .about-grid { grid-template-columns: 1fr; } }
+    .checklist { list-style: none; padding: 0; margin: 0; }
+    .checklist li { display:flex; align-items:flex-start; gap: 10px; margin-bottom: 12px; color: var(--muted); }
+    .checklist i { color: var(--green); margin-top: 3px; }
+
+    /* FAQ */
+    .faq-wrap { max-width: 900px; margin: 0 auto; }
+    .faq-item { background: var(--card); border:1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow:hidden; }
+    .faq-question { width:100%; text-align:left; background:none; color: var(--text); padding: 16px 18px; border:0; display:flex; align-items:center; justify-content: space-between; cursor:pointer; font-weight:700; }
+    .faq-question .q { color: var(--green); margin-right: 10px; }
+    .faq-answer { display:none; padding: 0 18px 16px; color: var(--muted); }
+    .faq-answer.active { display:block; }
+
+    /* Footer */
+    footer { background: #121a23; border-top: 1px solid #0e1620; padding: 48px 0 20px; margin-top: 60px; }
+    .footer-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+    @media (max-width: 800px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px){ .footer-grid { grid-template-columns: 1fr; } }
+    .footer h4 { color: var(--green); margin: 0 0 12px; }
+    .footer ul { list-style:none; margin:0; padding:0; }
+    .footer a { color: #bfc9d4; text-decoration:none; }
+    .footer a:hover { color: var(--green); }
+    .copyright { text-align:center; color:#8390a0; margin-top: 28px; font-size: 14px; }
+
+    /* Language content visibility */
+    .lang-content { display:none; }
+    .lang-content.active { display:block; }
+
+    /* Utility */
+    .mb-0{margin-bottom:0}
+  </style>
 </head>
 <body>
-<header style="background: #020911;">
-    <nav class="container">
-        <div>
-            <img src="images/logo_small.png" alt="AKULAB Logo" style="height: 70px;">
-        </div>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top">
+          <img src="images/logo_small.png" alt="AKULAB Logo" />
+        </a>
         <ul class="nav-links">
-            <li><a href="#products" data-translate="nav.products">Produkter</a></li>
-            <li><a href="#about" data-translate="nav.about">Om oss</a></li>
-            <li><a href="#contact" data-translate="nav.contact">Kontakta oss</a></li>
-            <li><a href="#faq" data-translate="nav.support">Hjälp & Support</a></li>
+          <li><a href="#products" data-translate="nav.products">Produkter</a></li>
+          <li><a href="#finder" data-translate="nav.find">Hitta batteri via reg nr</a></li>
         </ul>
-        <div class="language-switcher">
+        <div class="nav-right">
+          <button class="icon-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="icon-btn" aria-label="Account"><i class="fa-regular fa-user"></i></button>
+          <button class="icon-btn" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></button>
+          <div class="language-switcher">
             <button class="lang-btn active" data-lang="sv" onclick="switchLanguage('sv')">SV</button>
             <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+          </div>
         </div>
-        <div class="mobile-menu">
-            <i class="fas fa-bars"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- SV CONTENT -->
+    <div class="lang-content active" id="sv-content">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-media">
+            <div class="hero-card">
+              <img src="images/hero-battery.png" alt="Bilbatteri" class="hero-img" />
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">AKULAB • CHARGING SOLUTIONS</div>
+            <h1>Batterier från ledande varumärken – direkt till din dörr</h1>
+            <p>Bilbatterier, MC-batterier, stationära & solcellsbatterier från branschledande leverantörer.</p>
+            <div class="hero-actions">
+              <a href="#products" class="btn primary">Se våra produkter</a>
+              <a href="#finder" class="btn success">Sök</a>
+            </div>
+            <div class="finder">
+              <div id="finder" class="finder-card">
+                <h3 class="finder-title">Sök batteri via registreringsnummer</h3>
+                <div class="finder-row">
+                  <input class="input" type="text" placeholder="Ange ditt registreringsnummer" />
+                  <button class="btn primary" type="button">Sök</button>
+                </div>
+                <div class="finder-hint">Vi hittar batteri för din bil, motorcykel eller maskin på några sekunder</div>
+              </div>
+            </div>
+          </div>
         </div>
-    </nav>
-</header>
+      </section>
 
-    <main class="container">
-        <!-- Swedish Content -->
-        <div class="lang-content active" id="sv-content">
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>Batterier från ledande varumärken – direkt till din dörr</h1>
-                    <p>Bilbatterier, MC-batterier, stationära & solcellsbatterier från branschledande leverantörer</p>
-                    <div class="hero-buttons">
-                        <a href="#products" class="btn btn-primary">Se våra produkter</a>
-                        <a href="#contact" class="btn btn-success">Sök</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="images/logo.png" alt="Logo" class="battery-image">
-                </div>
-            </section>
-
-           <section class="battery-search" style="text-align: center; padding: 50px 20px; border-radius: 12px;">
-              <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: #FFF;">Besök vår webbshop</h3>
-              <p style="font-size: 1rem; margin-bottom: 40px; color: #FFF;"> Vi har allt du behöver för ditt batteribehov – direkt i vår nätbutik. </p>
-              <a href="https://yourshopurl.com" class="btn btn-success" style="padding: 15px 30px; font-size: 1.1rem; border-radius: 8px; text-decoration: none;"> Gå till butik </a>
-        </section>
-
-            <section id="products" class="products">
-                <h2>Produkter</h2>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <h3>Bilbatterier</h3>
-                        <p class="product-price">Från 367 kr</p>
-                        <p class="product-stock">Lägg i varukorg</p>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-motorcycle"></i>
-                        </div>
-                        <h3>MC-batterier</h3>
-                        <p class="product-price">Från 367 kr</p>
-                        <p class="product-stock">Lägg i varukorg</p>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Stationära batterier</h3>
-                        <p class="product-price">Från 367 kr</p>
-                        <p class="product-stock">Lägg i varukorg</p>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-icon">
-                            <i class="fas fa-solar-panel"></i>
-                        </div>
-                        <h3>Solcellsbatterier</h3>
-                        <p class="product-price">Från 367 kr</p>
-                        <p class="product-stock">Lägg i varukorg</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="about" class="about">
-                <div class="about-content">
-                    <div>
-                        <h2>Välkommen till AKULAB – din batteripartner i Sverige</h2>
-                        <p>AKULAB är en ny återförsäljare i Sverige som erbjuder fokuserat på att leverera högkvalitativa batterier från välkända varumärken – direkt till din dörr. Vi brinner för att erbjuda pålitliga lösningar för alla dina batteribehov, vare sig det gäller bil, motorcykel, stationära system eller solcellslösningar.</p>
-                        <p>Vi samarbetar med branschledande leverantörer som Vrakumulator, E-moto och Akulaz för att säkerställa att våra kunder får tillgång till det bästa urval som marknaden har att erbjuda.</p>
-
-                        <h3>Varför välja oss?</h3>
-                        <ul class="about-features">
-                            <li>Snabb leverans i hela Sverige</li>
-                            <li>Kända märken & garantier</li>
-                            <li>Klarna, Swish & kortbetalning</li>
-                        </ul>
-                    </div>
-                    <div class="vision-section">
-                        <h3>Vår vision</h3>
-                        <p>Vi vill förenkla hur privatpersoner och företag hittar rätt batteri – snabbt, smidigt och till ett bra pris. Med hjälp av vårt smarta sökverktyg via registreringsnummer tar det bara några sekunder att hitta rätt produkt för just ditt fordon eller maskin.</p>
-                        <p>Har du frågor? Tveka inte att <a href="#contact" style="color: #7fff00;">kontakta oss</a>. Vi hjälper dig gärna!</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="faq" class="faq">
-                <h2>Vanliga frågor</h2>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Hur hittar jag rätt batteri till min bil?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Använd vår sökfunktion med ditt registreringsnummer så hittar vi automatiskt rätt batteri för din bil på några sekunder.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Hur lång är leveranstiden?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Vi levererar normalt inom 1-3 arbetsdagar till hela Sverige. Express leverans finns tillgänglig för vissa områden.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Vilka betalningsmetoder erbjuder ni?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Vi accepterar Klarna, Swish och alla större kreditkort för din bekvämlighet.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Hur returnerar jag en produkt?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Kontakta oss inom 14 dagar efter köpet så guidar vi dig genom returprocessen. Du har full ångerrätt enligt svensk lag.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Vad gör jag om mitt batteri är trasigt?
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Alla våra batterier kommer med tillverkarens garanti. Kontakta oss direkt så hjälper vi dig med garantiärende eller utbyte.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="contact">
-                <h2>Kontakta oss</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Vi hjälper dig gärna!</h3>
-                        <div class="contact-details">
-                            <p>Har du frågor om våra produkter, leveranser eller behöver hjälp att hitta rätt batteri? Fyll i formuläret nedan eller kontakta oss direkt.</p>
-                            <br>
-                            <p><strong>E-post:</strong> info@akulab.com</p>
-                            <p><strong>Telefon:</strong> +46 777 777 7777</p>
-                            <p><strong>Öppettider:</strong> Mån-Fre 09:00-17:00</p>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <h3>Kontaktformulär</h3>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" placeholder="Karl Johansson" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="karl@gmail.com" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea placeholder="Beskriv ditt ärende här..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-success">Skicka formulär</button>
-                        </form>
-                    </div>
-                </div>
-                <div style="margin-top: 2rem;">
-                    <div class="contact-info">
-                        <h3>Kundtjänst</h3>
-                        <p>Om du inte hittar svar på din fråga här, är du alltid välkommen att kontakta oss:</p>
-                        <p><strong>E-post:</strong></p>
-                    </div>
-                </div>
-            </section>
+      <section id="products" class="section">
+        <div class="container">
+          <h2 class="title">Produkter</h2>
+          <div class="grid-4">
+            <!-- Card 1 -->
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/car-battery.jpg" alt="Bilbatterier" />
+              <h3 class="product-name">Bilbatterier</h3>
+              <div class="product-price">Från 387 kr</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Lägg i varukorg</a>
+            </article>
+            <!-- Card 2 -->
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/motorcycle-battery.jpg" alt="MC-batterier" />
+              <h3 class="product-name">MC‑batterier</h3>
+              <div class="product-price">Från 387 kr</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Lägg i varukorg</a>
+            </article>
+            <!-- Card 3 -->
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/stationary-battery.jpg" alt="Stationära batterier" />
+              <h3 class="product-name">Stationära batterier</h3>
+              <div class="product-price">Från 387 kr</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Lägg i varukorg</a>
+            </article>
+            <!-- Card 4 -->
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/solar-battery.jpg" alt="Solcellsbatterier" />
+              <h3 class="product-name">Solcellsbatterier</h3>
+              <div class="product-price">Från 387 kr</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Lägg i varukorg</a>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <!-- English Content -->
-        <div class="lang-content" id="en-content">
-          <section class="hero">
-            <div class="hero-content">
-              <h1>Batteries from leading brands—delivered to your door</h1>
-              <p>Car, motorcycle, stationary & solar batteries from industry-leading suppliers</p>
-              <div class="hero-buttons">
-                <a href="#products-en" class="btn btn-primary">See our products</a>
-                <a href="#contact-en" class="btn btn-success">Search</a>
-              </div>
+      <section id="about" class="section alt">
+        <div class="container">
+          <h2 class="title center">Om oss</h2>
+          <div class="about-grid">
+            <div>
+              <h3 class="mb-0">Varför välja oss?</h3>
+              <ul class="checklist">
+                <li><i class="fa-solid fa-check"></i> Snabb leverans i hela Sverige</li>
+                <li><i class="fa-solid fa-check"></i> Kända märken & garantier</li>
+                <li><i class="fa-solid fa-check"></i> Klarna, Swish & kortbetalning</li>
+              </ul>
             </div>
-            <div class="hero-image">
-              <img src="images/logo.png" alt="Logo" class="battery-image">
+            <div>
+              <p>AKULAB är en ny återförsäljare i Sverige som fokuserar på att leverera högkvalitativa batterier från välkända varumärken – direkt till din dörr. Vi brinner för att erbjuda pålitliga lösningar för alla dina batteribehov, vare sig det gäller bil, motorcykel, stationära system eller solcellslösningar.</p>
+              <p>Vi samarbetar med branschledande leverantörer som <strong>Vrakumulator</strong>, <strong>E‑moto</strong> och <strong>Akulaz</strong> för att säkerställa att våra kunder får tillgång till det bästa urvalet på marknaden.</p>
+              <h3>Vår vision</h3>
+              <p>Vi vill förenkla hur privatpersoner och företag hittar rätt batteri – snabbt, smidigt och till ett bra pris. Med hjälp av vårt smarta sökverktyg via registreringsnummer tar det bara några sekunder att hitta rätt produkt för just ditt fordon eller maskin.</p>
             </div>
-          </section>
-
-          <section class="battery-search" style="text-align: center; padding: 50px 20px; border-radius: 12px;">
-            <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: #FFF;">Visit our web shop</h3>
-            <p style="font-size: 1rem; margin-bottom: 40px; color: #FFF;"> We’ve got everything you need—right in our online store. </p>
-            <a href="https://yourshopurl.com" class="btn btn-success" style="padding: 15px 30px; font-size: 1.1rem; border-radius: 8px; text-decoration: none;"> Go to shop </a>
-          </section>
-
-          <section id="products-en" class="products">
-            <h2>Products</h2>
-            <div class="product-grid">
-              <div class="product-card">
-                <div class="product-icon"><i class="fas fa-car"></i></div>
-                <h3>Car batteries</h3>
-                <p class="product-price">From 367 SEK</p>
-                <p class="product-stock">Add to cart</p>
-              </div>
-              <div class="product-card">
-                <div class="product-icon"><i class="fas fa-motorcycle"></i></div>
-                <h3>Motorcycle batteries</h3>
-                <p class="product-price">From 367 SEK</p>
-                <p class="product-stock">Add to cart</p>
-              </div>
-              <div class="product-card">
-                <div class="product-icon"><i class="fas fa-bolt"></i></div>
-                <h3>Stationary batteries</h3>
-                <p class="product-price">From 367 SEK</p>
-                <p class="product-stock">Add to cart</p>
-              </div>
-              <div class="product-card">
-                <div class="product-icon"><i class="fas fa-solar-panel"></i></div>
-                <h3>Solar batteries</h3>
-                <p class="product-price">From 367 SEK</p>
-                <p class="product-stock">Add to cart</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="about-en" class="about">
-            <div class="about-content">
-              <div>
-                <h2>Welcome to AKULAB – your battery partner in Sweden</h2>
-                <p>AKULAB is a new Swedish retailer focused on delivering high-quality batteries from well-known brands—straight to your door. We’re passionate about reliable solutions for all your battery needs: cars, motorcycles, stationary systems, and solar.</p>
-                <p>We partner with industry-leading suppliers like Vrakumulator, E-moto, and Akulaz to ensure you get the best the market offers.</p>
-                <h3>Why choose us?</h3>
-                <ul class="about-features">
-                  <li>Fast delivery across Sweden</li>
-                  <li>Trusted brands & warranties</li>
-                  <li>Klarna, Swish & card payments</li>
-                </ul>
-              </div>
-              <div class="vision-section">
-                <h3>Our vision</h3>
-                <p>We simplify how people and businesses find the right battery—quickly, smoothly, and at a great price. With our smart license plate search, it takes seconds to find the perfect product for your vehicle or machine.</p>
-                <p>Questions? Don’t hesitate to <a href="#contact-en" style="color: #7fff00;">contact us</a>. We’re happy to help!</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="faq-en" class="faq">
-            <h2>Frequently asked questions</h2>
-            <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
-                How do I find the right battery for my car?
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>Use our license plate search and we’ll automatically find the right battery in seconds.</p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
-                What’s the delivery time?
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>We usually deliver within 1–3 business days across Sweden. Express options available in some areas.</p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
-                Which payment methods do you offer?
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>We accept Klarna, Swish, and major credit cards.</p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
-                How do I return a product?
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>Contact us within 14 days of purchase and we’ll guide you through the return. You have full right of withdrawal under Swedish law.</p>
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question" onclick="toggleFaq(this)">
-                What if my battery is faulty?
-                <i class="fas fa-chevron-down"></i>
-              </button>
-              <div class="faq-answer">
-                <p>All batteries include the manufacturer’s warranty. Contact us and we’ll handle the warranty claim or replacement.</p>
-              </div>
-            </div>
-          </section>
-
-          <section id="contact-en" class="contact">
-            <h2>Contact us</h2>
-            <div class="contact-content">
-              <div class="contact-info">
-                <h3>We’re happy to help!</h3>
-                <div class="contact-details">
-                  <p>Questions about products, delivery, or finding the right battery? Fill in the form or reach out directly.</p>
-                  <br>
-                  <p><strong>Email:</strong> info@akulab.com</p>
-                  <p><strong>Phone:</strong> +46 777 777 7777</p>
-                  <p><strong>Opening hours:</strong> Mon–Fri 09:00–17:00</p>
-                </div>
-              </div>
-              <div class="contact-form">
-                <h3>Contact form</h3>
-                <form>
-                  <div class="form-group">
-                    <input type="text" placeholder="Karl Johansson" required>
-                  </div>
-                  <div class="form-group">
-                    <input type="email" placeholder="karl@gmail.com" required>
-                  </div>
-                  <div class="form-group">
-                    <textarea placeholder="Describe your request here..." required></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-success">Send</button>
-                </form>
-              </div>
-            </div>
-          </section>
+          </div>
         </div>
-    </main>
+      </section>
 
-    <script>
-      // Simple dictionary for header labels (uses your data-translate keys)
-      const i18n = {
-        sv: {
-          'nav.products': 'Produkter',
-          'nav.about': 'Om oss',
-          'nav.contact': 'Kontakta oss',
-          'nav.support': 'Hjälp & Support'
-        },
-        en: {
-          'nav.products': 'Products',
-          'nav.about': 'About',
-          'nav.contact': 'Contact',
-          'nav.support': 'Help & Support'
-        }
-      };
+      <section id="faq" class="section">
+        <div class="container">
+          <h2 class="title center">Hjälp & Support</h2>
+          <div class="faq-wrap">
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> Hur hittar jag rätt batteri till min bil?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Använd vår sökfunktion med ditt registreringsnummer så hittar vi automatiskt rätt batteri för din bil på några sekunder.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> Hur lång är leveranstiden?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Vi levererar normalt inom 1–3 arbetsdagar i hela Sverige. Express finns för vissa områden.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> Vilka betalningsmetoder erbjuder ni?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Klarna, Swish och alla större kreditkort.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> Hur returnerar jag en produkt?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Kontakta oss inom 14 dagar efter köpet så guidar vi dig genom returen. Full ångerrätt enligt svensk lag.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> Vad gör jag om mitt batteri är trasigt?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Alla våra batterier har tillverkarens garanti. Kontakta oss så hjälper vi dig med ärendet.</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      const anchorTargets = {
-        sv: { products: '#products', about: '#about', contact: '#contact', faq: '#faq' },
-        en: { products: '#products-en', about: '#about-en', contact: '#contact-en', faq: '#faq-en' }
-      };
+      <section id="contact" class="section alt">
+        <div class="container">
+          <h2 class="title center">Kontakta oss</h2>
+          <div class="about-grid">
+            <div>
+              <h3>Vi hjälper dig gärna!</h3>
+              <p>Frågor om produkter, leveranser eller att hitta rätt batteri? Fyll i formuläret eller kontakta oss direkt.</p>
+              <p><strong>E‑post:</strong> info@akulab.com</p>
+              <p><strong>Telefon:</strong> +46 777 777 7777</p>
+              <p><strong>Öppettider:</strong> Mån–Fre 09:00–17:00</p>
+            </div>
+            <div>
+              <form class="finder-card">
+                <h3 class="finder-title">Kontaktformulär</h3>
+                <div style="display:grid; gap:12px;">
+                  <input class="input" type="text" placeholder="Namn" required />
+                  <input class="input" type="email" placeholder="E‑post" required />
+                  <textarea class="input" style="height:120px; padding-top:10px;" placeholder="Meddelande" required></textarea>
+                  <button class="btn success" type="submit">Skicka formulär</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
-      function applyHeaderTranslations(lang) {
-        document.querySelectorAll('[data-translate]').forEach(el => {
-          const key = el.getAttribute('data-translate');
-          if (i18n[lang] && i18n[lang][key]) {
-            el.textContent = i18n[lang][key];
-          }
-        });
-      }
+    <!-- EN CONTENT -->
+    <div class="lang-content" id="en-content">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-media">
+            <div class="hero-card">
+              <img src="images/hero-battery.png" alt="Battery" class="hero-img" />
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">AKULAB • CHARGING SOLUTIONS</div>
+            <h1>Batteries from leading brands—delivered to your door</h1>
+            <p>Car, motorcycle, stationary & solar batteries from industry‑leading suppliers.</p>
+            <div class="hero-actions">
+              <a href="#products-en" class="btn primary">See our products</a>
+              <a href="#finder-en" class="btn success">Search</a>
+            </div>
+            <div class="finder">
+              <div id="finder-en" class="finder-card">
+                <h3 class="finder-title">Search by license plate</h3>
+                <div class="finder-row">
+                  <input class="input" type="text" placeholder="Enter your license plate" />
+                  <button class="btn primary" type="button">Search</button>
+                </div>
+                <div class="finder-hint">We’ll find the right battery for your vehicle in seconds.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      function applyHeaderAnchors(lang) {
-        const links = document.querySelectorAll('.nav-links a');
-        const map = anchorTargets[lang];
-        if (!map) return;
-        links.forEach(a => {
-          const key = a.getAttribute('data-translate');
-          if (key === 'nav.products') a.setAttribute('href', map.products);
-          if (key === 'nav.about') a.setAttribute('href', map.about);
-          if (key === 'nav.contact') a.setAttribute('href', map.contact);
-          if (key === 'nav.support') a.setAttribute('href', map.faq);
-        });
-      }
+      <section id="products-en" class="section">
+        <div class="container">
+          <h2 class="title">Products</h2>
+          <div class="grid-4">
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/car-battery.jpg" alt="Car batteries" />
+              <h3 class="product-name">Car batteries</h3>
+              <div class="product-price">From 387 SEK</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Add to cart</a>
+            </article>
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/motorcycle-battery.jpg" alt="Motorcycle batteries" />
+              <h3 class="product-name">Motorcycle batteries</h3>
+              <div class="product-price">From 387 SEK</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Add to cart</a>
+            </article>
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/stationary-battery.jpg" alt="Stationary batteries" />
+              <h3 class="product-name">Stationary batteries</h3>
+              <div class="product-price">From 387 SEK</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Add to cart</a>
+            </article>
+            <article class="product-card">
+              <img class="product-thumb" src="images/products/solar-battery.jpg" alt="Solar batteries" />
+              <h3 class="product-name">Solar batteries</h3>
+              <div class="product-price">From 387 SEK</div>
+              <div class="product-spacer"></div>
+              <a href="#" class="btn success">Add to cart</a>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      function switchLanguage(lang) {
-        // Toggle content blocks
-        document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
-        const target = document.getElementById(lang + '-content');
-        if (target) target.classList.add('active');
+      <section id="about-en" class="section alt">
+        <div class="container">
+          <h2 class="title center">About</h2>
+          <div class="about-grid">
+            <div>
+              <h3 class="mb-0">Why choose us?</h3>
+              <ul class="checklist">
+                <li><i class="fa-solid fa-check"></i> Fast delivery across Sweden</li>
+                <li><i class="fa-solid fa-check"></i> Trusted brands & warranties</li>
+                <li><i class="fa-solid fa-check"></i> Klarna, Swish & card payments</li>
+              </ul>
+            </div>
+            <div>
+              <p>AKULAB is a new Swedish retailer focused on delivering high‑quality batteries from well‑known brands—straight to your door. We provide reliable solutions for all battery needs: cars, motorcycles, stationary systems, and solar.</p>
+              <p>We partner with industry‑leading suppliers like <strong>Vrakumulator</strong>, <strong>E‑moto</strong> and <strong>Akulaz</strong> to ensure the best selection on the market.</p>
+              <h3>Our vision</h3>
+              <p>We simplify how people and businesses find the right battery—quickly, smoothly, and at a great price. With our smart license plate search, it takes seconds to find the perfect product for your vehicle or machine.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        // Toggle active button using data-lang
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-          btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-        });
+      <section id="faq-en" class="section">
+        <div class="container">
+          <h2 class="title center">Help & Support</h2>
+          <div class="faq-wrap">
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> How do I find the right battery for my car?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Use our license plate search and we’ll automatically find the right battery in seconds.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> What is the delivery time?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">We usually deliver within 1–3 business days across Sweden. Express options are available in some areas.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> Which payment methods do you offer?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Klarna, Swish and all major credit cards.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> How do I return a product?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">Contact us within 14 days of purchase and we’ll guide you through the return. You have full right of withdrawal under Swedish law.</div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)"><span class="q">→</span> What if my battery is faulty?<i class="fa-solid fa-chevron-down"></i></button>
+              <div class="faq-answer">All batteries include the manufacturer’s warranty. Contact us and we’ll handle the claim or replacement.</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        // Update header labels and anchors
-        applyHeaderTranslations(lang);
-        applyHeaderAnchors(lang);
+      <section id="contact-en" class="section alt">
+        <div class="container">
+          <h2 class="title center">Contact us</h2>
+          <div class="about-grid">
+            <div>
+              <h3>We’re happy to help!</h3>
+              <p>Questions about products, delivery, or finding the right battery? Fill out the form or reach out directly.</p>
+              <p><strong>Email:</strong> info@akulab.com</p>
+              <p><strong>Phone:</strong> +46 777 777 7777</p>
+              <p><strong>Opening hours:</strong> Mon–Fri 09:00–17:00</p>
+            </div>
+            <div>
+              <form class="finder-card">
+                <h3 class="finder-title">Contact form</h3>
+                <div style="display:grid; gap:12px;">
+                  <input class="input" type="text" placeholder="Name" required />
+                  <input class="input" type="email" placeholder="Email" required />
+                  <textarea class="input" style="height:120px; padding-top:10px;" placeholder="Message" required></textarea>
+                  <button class="btn success" type="submit">Send</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
-        // Set document language
-        document.documentElement.setAttribute('lang', lang);
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h4 data-translate="footer.help">Hjälp och support</h4>
+        <ul>
+          <li><a href="#faq">Vanliga frågor</a></li>
+          <li><a href="#contact">Kontakta oss</a></li>
+          <li><a href="#contact">Kundtjänst</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Om oss</h4>
+        <ul>
+          <li><a href="#about">Vår vision</a></li>
+          <li><a href="#about">Varför välja oss</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Mitt konto</h4>
+        <ul>
+          <li><a href="#">Personlig information</a></li>
+          <li><a href="#">Orderhistorik</a></li>
+          <li><a href="#">Adress</a></li>
+          <li><a href="#">Lösenord</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakta oss</h4>
+        <ul>
+          <li><a href="#contact">Kontaktformulär</a></li>
+          <li><a href="#contact">Telefon</a></li>
+          <li><a href="#contact">E‑post</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">© 2025 Akulab AB</div>
+  </footer>
 
-        // Persist choice
-        try { localStorage.setItem('akulab_lang', lang); } catch (_) {}
-      }
+  <script>
+    // i18n for header labels
+    const i18n = {
+      sv: { 'nav.products': 'Produkter', 'nav.find': 'Hitta batteri via reg nr' },
+      en: { 'nav.products': 'Products',  'nav.find': 'Find battery by plate' }
+    };
+    const anchorTargets = {
+      sv: { products: '#products', find: '#finder' },
+      en: { products: '#products-en', find: '#finder-en' }
+    };
 
-      // Restore preferred language on load
-      (function initLanguage() {
-        const saved = (localStorage.getItem('akulab_lang') || 'sv').toLowerCase();
-        const lang = ['sv', 'en'].includes(saved) ? saved : 'sv';
-        switchLanguage(lang);
-      })();
+    function applyHeaderTranslations(lang){
+      document.querySelectorAll('[data-translate]').forEach(el=>{
+        const key = el.getAttribute('data-translate');
+        if(i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
+      });
+      const map = anchorTargets[lang];
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        const key = a.getAttribute('data-translate');
+        if(key==='nav.products') a.href = map.products;
+        if(key==='nav.find') a.href = map.find;
+      });
+    }
 
-      // FAQ toggle
-      function toggleFaq(button) {
-        const answer = button.parentElement.querySelector('.faq-answer');
-        if (answer) answer.classList.toggle('active');
-      }
+    function switchLanguage(lang){
+      document.querySelectorAll('.lang-content').forEach(el=>el.classList.remove('active'));
+      const target = document.getElementById(lang+'-content');
+      if(target) target.classList.add('active');
+      document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active', btn.getAttribute('data-lang')===lang));
+      document.documentElement.setAttribute('lang', lang);
+      try{ localStorage.setItem('akulab_lang', lang); }catch(e){}
+      applyHeaderTranslations(lang);
+    }
 
-      // Expose to inline handlers
-      window.switchLanguage = switchLanguage;
-      window.toggleFaq = toggleFaq;
-    </script>
+    // Initialize
+    (function(){
+      const saved = (localStorage.getItem('akulab_lang')||'sv').toLowerCase();
+      switchLanguage(['sv','en'].includes(saved)?saved:'sv');
+    })();
+
+    function toggleFaq(btn){
+      const ans = btn.parentElement.querySelector('.faq-answer');
+      if(ans) ans.classList.toggle('active');
+    }
+
+    window.switchLanguage = switchLanguage;
+    window.toggleFaq = toggleFaq;
+  </script>
 </body>
 </html>
